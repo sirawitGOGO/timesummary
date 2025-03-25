@@ -16,5 +16,8 @@ RUN npx prisma generate
 # ใช้ Migrations
 # RUN npx prisma migrate deploy
 
+# Build TypeScript ก่อน
+RUN npx tsc
+
 # เริ่มเซิร์ฟเวอร์
 CMD ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
