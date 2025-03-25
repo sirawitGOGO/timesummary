@@ -21,7 +21,7 @@ export default function Dashboard() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/timesheet/getAll', { method: "GET" });
+            const response = await fetch('https://timesummary-1.onrender.com/api/timesheet/getAll', { method: "GET" });
             const result = await response.json();
             setData(result);
         } catch (error) {
@@ -32,7 +32,7 @@ export default function Dashboard() {
     const handleUploadCSVFromDrive = async () => {
         setUploadButonLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/timesheet/upload', { method: "POST" });
+            const response = await fetch('https://timesummary-1.onrender.com/api/timesheet/upload', { method: "POST" });
             const result = await response.json();
             console.log("Upload Response:", result);
             setData([]);
@@ -47,7 +47,7 @@ export default function Dashboard() {
     const handleDeleteAll = async () => {
         setDeleteButonLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/timesheet/deleteAll', { method: "DELETE" });
+            const response = await fetch('https://timesummary-1.onrender.com/api/timesheet/deleteAll', { method: "DELETE" });
             if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
             const result = await response.json();
             console.log("Delete Response:", result);
