@@ -4,6 +4,7 @@ import xlsx from "xlsx";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
 import multer from "multer"; // เพิ่ม multer
+import fs from "fs";
 
 dotenv.config();
 const prisma = new PrismaClient();
@@ -13,7 +14,7 @@ const storage = multer.memoryStorage(); // เก็บไฟล์ในหน�
 const upload = multer({ storage: storage });
 
 const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_KEY,
+    credentials: JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS!, "utf-8")),
     scopes: ["https://www.googleapis.com/auth/drive"],
 });
 

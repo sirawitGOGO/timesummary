@@ -25,7 +25,7 @@ fs.writeFileSync(keyFilePath, Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_KEY
 // ตั้งค่า GOOGLE_APPLICATION_CREDENTIALS ให้ชี้ไปที่ไฟล์ที่สร้างขึ้น
 process.env.GOOGLE_APPLICATION_CREDENTIALS = keyFilePath;
 
-console.log("Google Service Account Key is set.");
+console.log(`Google Service Account Key written to: ${keyFilePath}`);
 
 // ใช้ค่า GOOGLE_DRIVE_FOLDER_ID และ DATABASE_URL
 const googleDriveFolderId = process.env.GOOGLE_DRIVE_FOLDER_ID;

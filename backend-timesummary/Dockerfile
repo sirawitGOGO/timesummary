@@ -10,6 +10,8 @@ RUN npm install
 
 COPY . .
 
+ENV GOOGLE_APPLICATION_CREDENTIALS="/tmp/key.json"
+
 # สร้าง Prisma Client
 RUN npx prisma generate
 
