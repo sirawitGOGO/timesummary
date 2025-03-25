@@ -12,11 +12,13 @@ const prisma = new PrismaClient();
 // กำหนดการตั้งค่า storage สำหรับ multer
 const storage = multer.memoryStorage(); // เก็บไฟล์ในหน่วยความจำ
 const upload = multer({ storage: storage });
+const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_KEY!, "base64").toString("utf8"));
 
 const auth = new google.auth.GoogleAuth({
-    credentials: JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS!, "utf-8")),
+    credentials,
     scopes: ["https://www.googleapis.com/auth/drive"],
 });
+
 
 const drive = google.drive({ version: "v3", auth });
 
