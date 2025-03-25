@@ -1,0 +1,20 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model TimeSummary {
+  id            Int       @id @default(autoincrement())
+  FirstName     String
+  LastName      String
+  DueDate       String
+  WorkStatus    String
+  Attendance    String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
