@@ -14,7 +14,7 @@ COPY . .
 RUN npx prisma generate
 
 # ใช้ Migrations
-RUN npx prisma migrate deploy
+# RUN npx prisma migrate deploy
 
 # เริ่มเซิร์ฟเวอร์
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
